@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <title>Update Todo</title>
+</head>
+<body>
+<div class="container">
+    <h1>Todo List</h1>
+    <div>Name User: <span id="user" th:text="${username}"></span></div>
+
+    <table border="1" class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>content</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="todo : ${todos}">
+            <td th:text="${todo.todoId}"></td>
+            <td th:text="${todo.title}"></td>
+            <td th:text="${todo.content}"></td>
+            <td>
+              <span th:switch="${todo.status}">
+                <span th:case="unfinished">
+                   <button class="btn btn-success btn-update-status">
+                       <a th:href="@{'/UpdateStatus/' + ${todo.todoId}}">Chưa hoàn thành</a>
+                   </button>
+                </span>
+                <span th:case="finished">Đã hoàn thành</span>
+              </span>
+            </td>
+            <td>
+                <a class="btn btn-primary" th:href="@{/todos/{id}(id=${todo.todoId})}">View</a>
+                <a class="btn btn-warning" th:href="@{/todos/{id}/edit(id=${todo.todoId})}">Edit</a>
+                <a class="btn btn-danger" th:href="@{/todos/{id}/delete(id=${todo.todoId})}">Delete</a>
+                <a class="btn btn-success" th:href="@{/todos/share(todoId=${todo.todoId}, userId=${userId})}">Share</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-success" th:href="@{/todos/new(userId=${userId})}">Add New Todo</a>
+</div>
+
+<script crossorigin="anonymous" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js">
+</script>
+</body>
+</html>

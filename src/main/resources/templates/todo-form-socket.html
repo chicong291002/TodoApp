@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Todo Form</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.1/sockjs.min.js"></script>
+</head>
+<body>
+<h1>Todo Form</h1>
+<form id="add-todo-form">
+    <input type="hidden" id="todoId" th:field="*{todo.todoId}"/>
+    <input type="hidden" id="todo-user" th:field="*{user.userId}"/>
+    <label>Title:</label>
+    <input type="text" id="todo-title" th:field="*{todo.title}"/>
+    <label>content:</label>
+    <input type="text" id="todo-content" th:field="*{todo.content}"/>
+    <!-- Thêm trường ẩn cho status -->
+    <input type="hidden" id="todo-status" th:field="*{todo.status}" th:value="unfinished"/>
+    <button type="submit">Save</button>
+</form>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script th:src="@{/js/main.js}"></script>
+<a th:href="@{/todos}">Back to Todos</a>
+</body>
+</html>

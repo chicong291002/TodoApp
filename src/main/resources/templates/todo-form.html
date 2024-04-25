@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Todo Form</title>
+</head>
+<body>
+<h1>Todo Form</h1>
+<form th:object="${todo}" th:action="@{/todos}" method="post">
+    <input type="hidden" th:field="*{todoId}" />
+    <input type="hidden" th:field="*{userId}" />
+
+    <label>Title:</label>
+    <input type="text" th:field="*{title}" />
+
+    <label>Content:</label>
+    <input type="text" th:field="*{content}" />
+
+    <!-- Thêm trường ẩn cho status -->
+    <input type="hidden" th:field="*{status}" th:value="unfinished" />
+
+    <button type="submit">Save</button>
+</form>
+
+<a th:href="@{/todos}">Back to Todos</a>
+</body>
+</html>

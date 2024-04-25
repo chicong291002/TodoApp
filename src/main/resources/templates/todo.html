@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Update Todo</title>
+</head>
+<body>
+<div class="container">
+    <h1>Detail Todo</h1>
+    <div class="card">
+        <div class="card-body">
+            <h2 th:text="${todo.title}"></h2>
+            <p class="card-text" th:text="${todo.content}"></p>
+            <p class="card-text" th:text="${todo.status}"></p>
+            <a class="btn btn-primary" th:href="@{/todos}">Back to Todos</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

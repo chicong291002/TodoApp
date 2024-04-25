@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Share Todo User By Email</h1>
+<p th:text="${message}"></p>
+
+<form th:action="@{/todos/share}" method="post" onsubmit="return validateEmails()">
+    <input type="hidden" name="todoId" th:value="${todoId}"/>
+    <input type="hidden" name="userId" th:value="${userId}"/>
+    <label for="emails">
+        Enter Email Address here (if you enter multiple email address, go down the line):
+    </label><br>
+    <textarea id="emails" name="emails" rows="4" cols="50" style="width: 528px; height: 98px;"></textarea><br>
+    <button type="submit">Save</button>
+</form>
+
+<a th:href="@{/todos}">Back to Todos</a>
+
+</body>
+
+<script>
+    function validateEmails() {
+        var emails = document.getElementById("emails").value.trim();
+        var emailArray = emails.split(/\s*[\n\r]+\s*/);
+
+        for (var i = 0; i < emailArray.length; i++) {
+            var email = emailArray[i].trim();
+            if (!validateEmail(email)) {
+                alert("Please enter a valid email address: " + email);
+                return false;
+            }
+        }
+        return true;
+    }
+
+    function validateEmail(email) {
+        var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+</script>
+</html>

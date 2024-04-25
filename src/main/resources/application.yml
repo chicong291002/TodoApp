@@ -1,0 +1,18 @@
+#spring:
+#  security:
+#    oauth2:
+#      client:
+#        provider:
+#          azure:
+#            issuer-uri: https://login.microsoftonline.com/1f50b63d-db9a-4f07-9159-9ec58854438e/v2.0
+#        registration:
+#          azure-dev:
+#            provider: azure
+#            client-id:  3b97ba91-7949-43ce-8763-7cf98505ccef
+#            client-secret: ZFb8Q~OVZQ2vW3vJ0h5wJcXLCw0I5BSPVTYxMbgW
+#            scope:
+#              - openid
+#              - email
+#              - profile
+#              - api://3b97ba91-7949-43ce-8763-7cf98505ccef/DemoApp
+#            client-name: Login with Azure
